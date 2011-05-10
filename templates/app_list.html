@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block list_aplikasi %}
+<div id="item_list">
+	<div class="box_container">
+	{% if aplikasi_list %}
+		{% for aplikasi in aplikasi_list %}
+		<div class="box box_small">
+			<div class="box_header">
+				<img src="/media/icons/{{ aplikasi.gambar_aplikasi }}" />
+				<h3>{{ aplikasi.nama_aplikasi }}</h3>
+			</div>
+			<p id="app_desc">{{ aplikasi.keterangan }}</p>
+			<p><a href="/source/{{ aplikasi.link_unduh }}" class="simple_button">Download <br /><small>{{ aplikasi.jumlah_unduh }} downloads</small></a></p>
+		</div>
+			{% ifequal forloop.counter 4 %}
+			<div class="clear clear_small">&nbsp;</div>
+			{% endifequal %}
+		{% endfor %}
+	{% endif %}									
+	</div>
+	<div class="clear">&nbsp;</div>				
+	
+</div> <!-- End of item_list -->
+			
+{% endblock %}			

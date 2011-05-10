@@ -196,11 +196,16 @@ h1 {
 }
 
 #item_list {
-	float: right;
+	float: left;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	border-left: 0px solid #ccc; /* FIXME */
 	background: #FFF;
+}
+
+#app_desc {
+	height: 125px;
+	overflow: hidden;	
 }
 
 .clear {

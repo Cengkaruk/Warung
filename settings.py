@@ -5,20 +5,17 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Aji Kisworo Mukti', 'adzy@di.blankon.in'),
+    ('Azhari Harahap', 'azhari@harahap.us'),
 )
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'warung.db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
-}
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = 'media/db/warung.sqlite'
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+DATABASE_HOST = ''
+DATABASE_PORT = ''
 
 TIME_ZONE = 'Asia/Jakarta'
 LANGUAGE_CODE = 'en'
@@ -35,9 +32,6 @@ SECRET_KEY = '(fo--szdsapjf02jfj02f2mfk00202b)kwd5p=xwq@xl(++3^^hoiyou%m725qkp53
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-#    'django.template.loaders.filesystem.Loader',
-#    'django.template.loaders.app_directories.Loader',
-#    'django.template.loaders.eggs.Loader',
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
 )
@@ -45,10 +39,16 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'django.contrib.messages.middleware.MessageMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+	'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'web.global.kategori_list',
+    )
 
 ROOT_URLCONF = 'Warung.urls'
 
@@ -63,11 +63,9 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'web',
-    #'django.contrib.messages',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
